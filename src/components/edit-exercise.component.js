@@ -7,7 +7,7 @@ export default class EditExercise extends Component {
  state = {
       username: '',
       description: '',
-      duration: 0,
+      location: '',
       date: new Date(),
       users: []
  }
@@ -19,7 +19,7 @@ export default class EditExercise extends Component {
         this.setState({
           username: response.data.username,
           description: response.data.description,
-          duration: response.data.duration,
+          location: response.data.location,
           date: new Date(response.data.date)
         })   
       })
@@ -53,9 +53,9 @@ export default class EditExercise extends Component {
     })
   }
 
-  onChangeDuration= (e) =>{
+  onChangelocation= (e) =>{
     this.setState({
-      duration: e.target.value
+      location: e.target.value
     })
   }
 
@@ -71,7 +71,7 @@ export default class EditExercise extends Component {
     const exercise = {
       username: this.state.username,
       description: this.state.description,
-      duration: this.state.duration,
+      location: this.state.location,
       date: this.state.date
     }
 
@@ -115,12 +115,12 @@ export default class EditExercise extends Component {
               />
         </div>
         <div className="form-group">
-          <label>Duration (in minutes): </label>
+          <label>location (in minutes): </label>
           <input 
               type="text" 
               className="form-control"
-              value={this.state.duration}
-              onChange={this.onChangeDuration}
+              value={this.state.location}
+              onChange={this.onChangelocation}
               />
         </div>
         <div className="form-group">

@@ -7,7 +7,7 @@ export default class CreateExercise extends Component {
   state = {
       username: '',
       description: '',
-      duration: 0,
+      location: '',
       date: new Date(),
       users: []
   }
@@ -39,9 +39,9 @@ export default class CreateExercise extends Component {
     })
   }
   
-  onChangeDuration= (e) => {
+  onChangelocation= (e) => {
     this.setState({
-      duration: e.target.value
+      location: e.target.value
     })
   }
 
@@ -57,7 +57,7 @@ export default class CreateExercise extends Component {
     const exercise = {
       username: this.state.username,
       description: this.state.description,
-      duration: this.state.duration,
+      location: this.state.location,
       date: this.state.date
     }
 
@@ -72,7 +72,7 @@ export default class CreateExercise extends Component {
   render() {
     return (
     <div>
-      <h3>Create New Exercise Log</h3>
+      <h3>Create New Post</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
           <label>Username: </label>
@@ -80,7 +80,8 @@ export default class CreateExercise extends Component {
               required
               className="form-control"
               value={this.state.username}
-              onChange={this.onChangeUsername}>
+            // onChange={this.onChangeUsername}
+            >
               {
                 this.state.users.map(function(user) {
                   return <option 
@@ -101,12 +102,12 @@ export default class CreateExercise extends Component {
               />
         </div>
         <div className="form-group">
-          <label>Duration (in minutes): </label>
+          <label>Location : </label>
           <input 
               type="text" 
               className="form-control"
-              value={this.state.duration}
-              onChange={this.onChangeDuration}
+              value={this.state.location}
+              onChange={this.onChangelocation}
               />
         </div>
         <div className="form-group">
