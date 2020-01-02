@@ -1,30 +1,26 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import CreateUser from './create-user.component';
 import { Button , Card } from 'react-bootstrap';
 
 const Exercise = props => (
   <tr>
-    <td>{props.exercise.username}</td>
-    <td>{props.exercise.description}</td>
-    <td>{props.exercise.location}</td>
-    <td>{props.exercise.date.substring(0,10)}</td>
-    {/* <td>
-      <Link to={"/edit/" + props.exercise._id}>edit</Link> |
-       <a href="#" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
-    </td> */}
-    <td>
-      <Button variant="success"><Link to={"/edit/" + props.exercise._id} style={{ textDecoration: 'none' , color: 'white'}}
-      >edit</Link></Button>
-    </td>
-    
-      <Button variant="danger">
-        <a  onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
-      </Button>
-    
+    <tr><td>{props.exercise.username}</td></tr>
+    <tr><td>{props.exercise.description}</td></tr>
+    <tr><td>{props.exercise.location}</td></tr>
+    <tr><td>{props.exercise.date.substring(0,10)}</td></tr>
+    <tr>
+      <td>
+          <Button variant="success"><Link to={"/edit/" + props.exercise._id} style={{ textDecoration: 'none' , color: 'white' }}
+        >edit</Link><br /></Button>
+          <Button variant="danger">
+            <a  onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
+          </Button> 
+      </td>     
+    </tr>    
   </tr>
 )
-
 export default class ExercisesList extends Component {
     state = {exercises: []};
 
@@ -59,42 +55,25 @@ export default class ExercisesList extends Component {
       <div>
         <h3> All Posts</h3>
         <Card style={{ width: '50rem' }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
           <Card.Body>
-            <Card.Title>Username : </Card.Title>
+            <Card.Title>Post </Card.Title>
             <Card.Text>
-<thead className="thead-light">
-           
-          </thead>
-          <tbody>
-            <tr>
-              <th>Username</th>
-              <th>Description</th>
-              <th>location</th>
-              <th>Date</th>
-              <th>Actions</th>
-            </tr>
-                {this.exerciseList()}
-          </tbody>
+              <tbody>
+                <tr>
+                  <Card.Text><th>Username : </th></Card.Text> 
+                  <Card.Text> <th>Description : </th></Card.Text>
+                  <Card.Text><th>Location : </th></Card.Text>
+                  <Card.Text> <th>Created At : </th></Card.Text>
+                  <Card.Text>{this.exerciseList()}</Card.Text>                    
+                </tr>
+              </tbody>
+              <Button variant="primary">
+              <Link to={"/user/" + CreateUser} style={{ textDecoration: 'none', color: 'white' }}>
+                Create User</Link>
+              </Button>
             </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
           </Card.Body>
         </Card>
-
-        {/* <table className="table">
-          <thead className="thead-light">
-            <tr>
-              <th>Username</th>
-              <th>Description</th>
-              <th>location</th>
-              <th>Date</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            { this.exerciseList() }
-          </tbody>
-        </table> */}
       </div>
     )
   }

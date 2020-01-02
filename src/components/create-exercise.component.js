@@ -80,7 +80,7 @@ export default class CreateExercise extends Component {
               required
               className="form-control"
               value={this.state.username}
-            // onChange={this.onChangeUsername}
+            onChange={this.onChangeUsername}
             >
               {
                 this.state.users.map(function(user) {
