@@ -5,21 +5,29 @@ import CreateUser from './create-user.component';
 import { Button , Card } from 'react-bootstrap';
 
 const Exercise = props => (
-  <tr>
-    <tr><td>{props.exercise.username}</td></tr>
-    <tr><td>{props.exercise.description}</td></tr>
-    <tr><td>{props.exercise.location}</td></tr>
-    <tr><td>{props.exercise.date.substring(0,10)}</td></tr>
-    <tr>
-      <td>
-          <Button variant="success"><Link to={"/edit/" + props.exercise._id} style={{ textDecoration: 'none' , color: 'white' }}
-        >edit</Link><br /></Button>
-          <Button variant="danger">
-            <a  onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
-          </Button> 
-      </td>     
-    </tr>    
-  </tr>
+        <Card style={{ width: '50rem' }}>
+          <Card.Body>
+            <Card.Title>Post  : {props.exercise._id}</Card.Title>
+            <Card.Text>
+              <tbody>
+                <tr>
+                  <td>
+                  <Card.Text>Username : {props.exercise.username} </Card.Text> 
+                  <Card.Text>Description : {props.exercise.description} </Card.Text>
+                  <Card.Text>Location : {props.exercise.location} </Card.Text>
+                  <Card.Text>Created At : {props.exercise.date.substring(0,10)}</Card.Text>
+                  <Card.Text>
+                    Actions : <Button variant="success"><Link to={"/edit/" + props.exercise._id} style={{ textDecoration: 'none' , color: 'white' }} >edit</Link><br /></Button><span>     </span>
+                              <Button variant="danger" onClick= {() => { props.deleteExercise(props.exercise._id) }} > delete </Button>
+              </Card.Text>
+              
+                  </td>
+                </tr>
+              </tbody>
+            </Card.Text>
+          </Card.Body>
+        </Card>
+  
 )
 export default class ExercisesList extends Component {
     state = {exercises: []};
@@ -53,27 +61,14 @@ export default class ExercisesList extends Component {
   render() {
     return (
       <div>
-        <h3> All Posts</h3>
-        <Card style={{ width: '50rem' }}>
-          <Card.Body>
-            <Card.Title>Post </Card.Title>
-            <Card.Text>
-              <tbody>
-                <tr>
-                  <Card.Text><th>Username : </th></Card.Text> 
-                  <Card.Text> <th>Description : </th></Card.Text>
-                  <Card.Text><th>Location : </th></Card.Text>
-                  <Card.Text> <th>Created At : </th></Card.Text>
-                  <Card.Text>{this.exerciseList()}</Card.Text>                    
-                </tr>
-              </tbody>
-              <Button variant="primary">
-              <Link to={"/user/" + CreateUser} style={{ textDecoration: 'none', color: 'white' }}>
-                Create User</Link>
-              </Button>
-            </Card.Text>
-          </Card.Body>
-        </Card>
+        <h3> All Posts</h3>    
+
+        {this.exerciseList()}
+        <br />
+        
+                <Button variant="primary"> <Link to={"/user/" + CreateUser} style={{ textDecoration: 'none', color: 'white' }}>
+            Create User</Link>
+        </Button>
       </div>
     )
   }
