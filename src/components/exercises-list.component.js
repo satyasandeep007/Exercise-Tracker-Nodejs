@@ -19,7 +19,7 @@ const Exercise = props => (
                   <Card.Text>
                     Actions : <Button variant="success"><Link to={"/edit/" + props.exercise._id} style={{ textDecoration: 'none' , color: 'white' }} >edit</Link><br /></Button><span>     </span>
                               <Button variant="danger" onClick= {() => { props.deleteExercise(props.exercise._id) }} > delete </Button>
-              </Card.Text>
+                  </Card.Text>
               
                   </td>
                 </tr>

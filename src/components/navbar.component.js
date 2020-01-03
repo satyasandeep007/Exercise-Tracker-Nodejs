@@ -5,7 +5,9 @@ export default class Navbar extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+      // <div className="main" style={{ position="fixed" }}>
+        
+      <nav className="navbar navbar-dark bg-dark navbar-expand-lg sticky-top ">
         <Link to="/" className="navbar-brand">Reddit</Link>
         <div className="collpase navbar-collapse">
         <ul className="navbar-nav mr-auto">
@@ -21,6 +23,8 @@ export default class Navbar extends Component {
         </ul>
         </div>
       </nav>
+
+      // </div>
     );
   }
 }
